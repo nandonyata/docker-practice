@@ -4,7 +4,7 @@ const port = 3000;
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://admin:secret@localhost:4000")
+  .connect("mongodb://admin:secret@localhost:4001")
   .then(() => console.log("Connected to mongoDB"))
   .catch((err) => console.log("mongoDB error: ", err));
 
@@ -18,8 +18,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/:name", async (req, res) => {
-  const a = await Kitten.create({ name: req.params.name });
-  console.log({ a });
+  const cat = await Kitten.create({ name: req.params.name });
+  console.log("new cate here ... ", { cat });
 
   res.send(`Created ${req.params.name}`);
 });
